@@ -1,41 +1,56 @@
 package com.hwsyndrome.helloworld;
 
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.hwsyndrome.helloworld.domain.Customer;
 import com.hwsyndrome.helloworld.domain.Message;
-import com.hwsyndrome.helloworld.service.MessageService;
+import com.hwsyndrome.helloworld.service.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 public class App {
 
 	 public static void main(String[] args) {
 	        System.out.println("*** Beginning of test ***");
+	        new App().init();
+	  }
 
-	        // This is where the Spring framework is "started".
-	        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+	CustomerService customerService;
+	final Logger logger = LoggerFactory.getLogger(App.class);
 
-	        // This retreives the messageService bean, defined in the applicationContext.xml file.
-	        MessageService messageService = (MessageService) context.getBean("messageService");
+	private void init() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        customerService = (CustomerService) context.getBean("customerService");
+        List<Customer> customerList = createAndGetCustomers();
 
-	        // Create a new persistent message.
-	        messageService.createMessage("Hello World");
-	        messageService.createMessage("HELLO JPA");
-	        messageService.createMessage("I am working");
+	}
+	private  List<Customer> createAndGetCustomers() {
+		
+		Customer c1 = new Customer();
+		c1.setName("cusotmer1");
+		c1.setPhoneNumber(111);
+		customerService.createCustomer(c1);
+		
+		Customer c2 = new Customer();
+		c2.setName("cusotmer2");
+		c2.setPhoneNumber(222);
+		customerService.createCustomer(c2);
 
-	        // Ask the service to list all messages.
-	        List<Message> messages = messageService.listAllMessages();
+		Customer c3 = new Customer();
+		c3.setName("cusotmer3");
+		c3.setPhoneNumber(333);
+		
+		customerService.createCustomer(c3);
 
-//	        // List the messages to the system output.
-	        System.out.println(messages.size() + " message(s) found");
+		List<Customer> cList = customerService.findAll();
+		System.out.println(cList.size() + " customers(s) found");
+		return cList;
+	}
 
-	        for (Object m : messages) {
-	            Message loadedMsg = (Message) m;
-	            System.out.println(loadedMsg.getText());
-	        }
-
-	        System.out.println("*** End of test ***");
-	    }
-
-
+	
 }
