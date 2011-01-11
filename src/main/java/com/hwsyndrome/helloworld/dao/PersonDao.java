@@ -13,7 +13,13 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.hwsyndrome.helloworld.domain.Customer;
+/*
+ * CREATE TABLE `person` (
+  `personId` int(11) DEFAULT NULL,
+  `name` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+ */
 @Repository("personDao")
 public class PersonDao {
 
