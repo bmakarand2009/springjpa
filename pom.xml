@@ -1,0 +1,147 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>trial.sample</groupId>
+  <artifactId>springjpa</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <description>This is a sample Spring JPA Maven project Hibernate</description>
+  <properties>
+		<org.springframework.version>3.0.4.RELEASE</org.springframework.version>
+        <org.hibernate.version>3.5.1-Final</org.hibernate.version>
+        <junit.version>4.7</junit.version>
+        	<!--  tell the compiler we can use 1.5 -->
+        <maven.compiler.source>1.6</maven.compiler.source>
+	    <maven.compiler.target>1.6</maven.compiler.target>
+	    <junit.version>4.8.1</junit.version>
+	    <org.slf4j.version>1.6.1</org.slf4j.version>
+	    <log4j.version>1.2.16</log4j.version>
+	    <debug.level>DEBUG</debug.level>
+	</properties>
+  <repositories>
+	  	<repository>
+	  		<id>JBoss</id>
+	  		<url>http://repository.jboss.org/maven2/</url>
+	  	</repository>
+  	</repositories>
+  	
+  	<dependencies>
+  	 	<dependency>
+           <groupId>org.springframework</groupId>
+           <artifactId>spring-test</artifactId>
+           <version>${org.springframework.version}</version>
+           <scope>test</scope>
+	    </dependency>
+	    <dependency>
+			<groupId>javax.transaction</groupId>
+			<artifactId>jta</artifactId>
+			<version>1.1</version>
+		</dependency>
+	     <dependency>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring-context</artifactId>
+	            <version>${org.springframework.version}</version>
+	    </dependency>
+	   <dependency>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring-jdbc</artifactId>
+	            <version>${org.springframework.version}</version>
+	        </dependency>
+	        
+	    <dependency>
+	    	<groupId>org.springframework</groupId>
+	    	<artifactId>spring-orm</artifactId>
+	    	<version>${org.springframework.version}</version>
+	    </dependency>
+	    
+	    <dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-core</artifactId>
+		    <version>3.0.4.RELEASE</version>
+		</dependency>
+	    
+	    
+	    <dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${org.slf4j.version}</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>	
+	  
+	    <!--  hibernate -->
+	    <dependency>
+	    	<groupId>org.hibernate</groupId>
+	    	<artifactId>hibernate-core</artifactId>
+	    	<version>${org.hibernate.version}</version>
+	    </dependency>
+	    <dependency>
+	    	<groupId>org.hibernate</groupId>
+	    	<artifactId>hibernate-annotations</artifactId>
+	    	<version>${org.hibernate.version}</version>
+	    </dependency>
+	    <dependency>
+	    	<groupId>org.hibernate</groupId>
+	    	<artifactId>hibernate-entitymanager</artifactId>
+	    	<version>${org.hibernate.version}</version>
+	    </dependency>
+	    <dependency>
+	    	<groupId>org.hibernate.javax.persistence</groupId>
+	    	<artifactId>hibernate-jpa-2.0-api</artifactId>
+	    	<version>1.0.0.Final</version>
+	    </dependency>
+	    
+	    <dependency>
+	    	<groupId>org.hibernate</groupId>
+	    	<artifactId>hibernate-c3p0</artifactId>
+	    	<version>${org.hibernate.version}</version>
+	    </dependency>
+	
+	    
+	    <dependency>
+	    	<groupId>mysql</groupId>
+	    	<artifactId>mysql-connector-java</artifactId>
+	    	<version>5.1.13</version>
+	    </dependency>
+	    
+	    <dependency>
+		    <groupId>hsqldb</groupId>
+		    <artifactId>hsqldb</artifactId>
+		    <version>1.8.0.7</version>
+		</dependency>
+	    
+	    
+  	</dependencies>
+  	
+  	
+  	<build>
+	 <plugins>
+		
+		<plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-eclipse-plugin</artifactId>
+	        <version>2.8</version>
+	        <configuration>
+	          <excludes>
+	            <exclude>org.eclipse.jdt:core</exclude>
+	          </excludes>
+	        </configuration>
+	      </plugin>	
+	    
+			
+			<plugin>
+		            <groupId>org.apache.maven.plugins</groupId>
+		            <artifactId>maven-surefire-plugin</artifactId>
+		            <version>2.4.3</version>
+		            <configuration>
+		                <junitArtifactName>org.junit:com.springsource.org.junit</junitArtifactName>
+		                <forkMode>pertest</forkMode>
+		            </configuration>
+		      </plugin>
+ 
+		</plugins>
+	</build>
+  	
+</project>
