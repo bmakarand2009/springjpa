@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hwsyndrome.helloworld.dao.CustomerDao;
+import com.hwsyndrome.helloworld.dao.PersonDao;
 import com.hwsyndrome.helloworld.domain.Customer;
 import com.hwsyndrome.helloworld.domain.Message;
 
@@ -16,6 +17,8 @@ public class CustomerService {
 	@Autowired
     private CustomerDao customerDao;
 
+	@Autowired
+	private PersonDao personDao;
     //This one, put on the createMessage method overrides the default transaction definition 
     //saying that this method does require to be in a transaction 
     //(which Spring will create for you) and that it is not read only (it does write in the database).
@@ -27,5 +30,10 @@ public class CustomerService {
 	
 	public List<Customer>findAll(){
 		return customerDao.listAll();
+	}
+	
+	public boolean intiateCopy() {
+		List<Customer>cList = personDao.getAllCustomers("name");
+		return true;
 	}
 }

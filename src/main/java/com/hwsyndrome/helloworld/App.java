@@ -30,6 +30,7 @@ public class App {
 
 	}
 	private  List<Customer> createAndGetCustomers() {
+		customerService.intiateCopy();
 		
 		Customer c1 = new Customer();
 		c1.setName("cusotmer1");
